@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1802845, g: 0.22571556, b: 0.306923, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028468, g: 0.22571579, b: 0.30692378, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2265,6 +2265,11 @@ MonoBehaviour:
   mainCamera: {fileID: 928269665}
   toungeWidth: 0.2
   toungeMaxLength: 5
+  DebugMode: 1
+  spit:
+    actionPath: /actions/default/in/GrabPinch
+    needsReinit: 0
+  handType: 1
 --- !u!120 &1625829887
 LineRenderer:
   m_ObjectHideFlags: 0
