@@ -1,21 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class ToungeController : MonoBehaviour
 {
+	public TextMeshProUGUI countText;
+	public GameObject winTextObject;
     public LineRenderer toungeLineRenderer;
     public Camera debugCamera;
     public Camera mainCamera;
     public float toungeWidth = 1f;
     public float toungeMaxLength = 5f;
+	
+	private int count;
 
     private void Start()
     {
+		SetCountText();
+		winTextObject.SetActive(false);
         Vector3[] initLaserPositions = new Vector3[2] { Vector3.zero, Vector3.zero };
         toungeLineRenderer.SetPositions(initLaserPositions);
         toungeLineRenderer.SetWidth(toungeWidth, toungeWidth);
     }
+	
+	void SetCountText()
+	{
+		countText.text = "Count: " + count.ToString();
+		if (count >= 13){
+			winTextObject.SetActive(true);
+		}
+	}
 
     void Update()
     {
@@ -39,6 +55,8 @@ public class ToungeController : MonoBehaviour
         {
             if (hitData.transform.gameObject.tag == "PickUp") {
                 hitData.transform.gameObject.SetActive(false);
+				count += 1;
+				SetCountText();
             }
             endPosition = hitData.point;
         }

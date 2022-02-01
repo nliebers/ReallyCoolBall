@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028468, g: 0.22571579, b: 0.30692378, a: 1}
+  m_IndirectSpecularColor: {r: 0.1802845, g: 0.22571556, b: 0.306923, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2258,6 +2258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccc6c09200e89044a7886caa116c86c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countText: {fileID: 661567053}
+  winTextObject: {fileID: 1012932904}
   toungeLineRenderer: {fileID: 1625829887}
   debugCamera: {fileID: 1217995352}
   mainCamera: {fileID: 928269665}
@@ -2577,8 +2579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d43d13380e17fd4c9aba68d1da71886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countText: {fileID: 661567053}
-  winTextObject: {fileID: 1012932904}
 --- !u!114 &1816809328
 MonoBehaviour:
   m_ObjectHideFlags: 0
