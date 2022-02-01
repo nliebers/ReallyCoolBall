@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Valve.VR;
+using Valve.VR.InteractionSystem;
 
 
 public class ToungeController : MonoBehaviour
@@ -15,13 +16,17 @@ public class ToungeController : MonoBehaviour
     public float toungeWidth = 1f;
     public float toungeMaxLength = 5f;
     public bool DebugMode;
-	
-	private int count;
+    public SteamVR_Action_Boolean spit;
+    public SteamVR_Input_Sources handType;
+
+    private int count;
     private Camera cameraInUse;
+    private Interactable interactable;
     private List<GameObject> collectedEggs = new List<GameObject>();
 
     private void Start()
     {
+        interactable = GetComponent<Interactable>();
         if (DebugMode)
         {
             cameraInUse = debugCamera;
@@ -34,6 +39,8 @@ public class ToungeController : MonoBehaviour
         Vector3[] initLaserPositions = new Vector3[2] { Vector3.zero, Vector3.zero };
         toungeLineRenderer.SetPositions(initLaserPositions);
         toungeLineRenderer.SetWidth(toungeWidth, toungeWidth);
+
+        spit.AddOnStateDownListener(Spit, handType);
     }
 	
 	void SetCountText()
@@ -46,6 +53,11 @@ public class ToungeController : MonoBehaviour
 
     void Update()
     {
+        if (interactable.attachedToHand)
+        {
+            //get the hand's type, LeftHand or RightHand so that the controller can be used in either hand
+            SteamVR_Input_Sources hand = interactable.attachedToHand.handType;
+        }
         if (Input.GetKey(KeyCode.Space))
         {
             InitiateTounge();
@@ -60,6 +72,10 @@ public class ToungeController : MonoBehaviour
         }
     }
 
+    public void Spit(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource) {
+        Debug.Log("wow");
+    }
+
     void LaunchEgg() {
         if (collectedEggs.Count > 0) {
             GameObject egg = collectedEggs[0];
@@ -67,8 +83,8 @@ public class ToungeController : MonoBehaviour
             count -= 1;
             SetCountText();
             egg.SetActive(true);
-            egg.transform.position = cameraInUse.transform.position;
-            egg.GetComponent<Rigidbody>().AddForce(600.0f * cameraInUse.transform.forward);
+            egg.transform.position = cameraInUse.transform.position + cameraInUse.transform.forward * 1.5f;
+            egg.GetComponent<Rigidbody>().AddForce(1000.0f * cameraInUse.transform.forward);
         }
     }
 

@@ -15,6 +15,9 @@ public class Mover : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        eggs[Random.Range(0, eggs.Length)].GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f)));
+        GameObject egg = eggs[Random.Range(0, eggs.Length)];
+        if (egg.activeSelf) {
+            egg.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f)));
+        }
     }
 }
