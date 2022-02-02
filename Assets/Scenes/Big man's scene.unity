@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028468, g: 0.22571579, b: 0.30692378, a: 1}
+  m_IndirectSpecularColor: {r: 0.1802845, g: 0.22571556, b: 0.306923, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -704,8 +704,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356639763}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 7.57, y: 3.9068108, z: 12.85}
-  m_LocalScale: {x: 0.5, y: 2, z: 20.5}
+  m_LocalPosition: {x: 7.57, y: 23.03, z: 12.85}
+  m_LocalScale: {x: 0.5, y: 40, z: 20.5}
   m_Children: []
   m_Father: {fileID: 193747165}
   m_RootOrder: 2
@@ -966,8 +966,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574392195}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.4803715, y: 3.9068108, z: 2.8851109}
-  m_LocalScale: {x: 0.5, y: 2, z: 20.5}
+  m_LocalPosition: {x: -2.4803715, y: 23.03, z: 2.8851109}
+  m_LocalScale: {x: 0.5, y: 40, z: 20.5}
   m_Children: []
   m_Father: {fileID: 193747165}
   m_RootOrder: 0
@@ -1610,8 +1610,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1039866303}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 7.56, y: 3.9068108, z: -7.12}
-  m_LocalScale: {x: 0.5, y: 2, z: 20.5}
+  m_LocalPosition: {x: 7.56, y: 23.03, z: -7.12}
+  m_LocalScale: {x: 0.5, y: 40, z: 20.5}
   m_Children: []
   m_Father: {fileID: 193747165}
   m_RootOrder: 3
@@ -1931,8 +1931,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1388292909}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.75, y: 3.9068108, z: 2.8851109}
-  m_LocalScale: {x: 0.5, y: 2, z: 20.5}
+  m_LocalPosition: {x: 17.75, y: 23.03, z: 2.8851109}
+  m_LocalScale: {x: 0.5, y: 40, z: 20.5}
   m_Children: []
   m_Father: {fileID: 193747165}
   m_RootOrder: 1
@@ -2020,7 +2020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: a0d21cd28590bbc47acda6deb8afc734, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.65
+      value: 1.26
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: a0d21cd28590bbc47acda6deb8afc734, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2265,11 +2265,14 @@ MonoBehaviour:
   mainCamera: {fileID: 928269665}
   toungeWidth: 0.2
   toungeMaxLength: 5
-  DebugMode: 1
+  DebugMode: 0
   spit:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
-  handType: 1
+  toss:
+    actionPath: /actions/default/in/GrabGrip
+    needsReinit: 0
+  handType: 0
 --- !u!120 &1625829887
 LineRenderer:
   m_ObjectHideFlags: 0

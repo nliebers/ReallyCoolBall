@@ -17,6 +17,7 @@ public class ToungeController : MonoBehaviour
     public float toungeMaxLength = 5f;
     public bool DebugMode;
     public SteamVR_Action_Boolean spit;
+	public SteamVR_Action_Boolean toss;
     public SteamVR_Input_Sources handType;
 
     private int count;
@@ -41,6 +42,7 @@ public class ToungeController : MonoBehaviour
         toungeLineRenderer.SetWidth(toungeWidth, toungeWidth);
 
         spit.AddOnStateDownListener(Spit, handType);
+		toss.AddOnStateDownListener(Toss, handType);
     }
 	
 	void SetCountText()
@@ -53,27 +55,30 @@ public class ToungeController : MonoBehaviour
 
     void Update()
     {
-        if (interactable.attachedToHand)
-        {
-            //get the hand's type, LeftHand or RightHand so that the controller can be used in either hand
-            SteamVR_Input_Sources hand = interactable.attachedToHand.handType;
-        }
         if (Input.GetKey(KeyCode.Space))
         {
             InitiateTounge();
             toungeLineRenderer.enabled = true;
-        }
-        else
-        {
-            toungeLineRenderer.enabled = false;
+			StartCoroutine(DelayCoroutine());
         }
         if (Input.GetKeyDown(KeyCode.Tab)) {
             LaunchEgg();
         }
     }
 
-    public void Spit(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource) {
-        Debug.Log("wow");
+    void Spit(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource) {
+        InitiateTounge();
+		toungeLineRenderer.enabled = true;
+		StartCoroutine(DelayCoroutine());
+    }
+	
+	IEnumerator DelayCoroutine() {
+		yield return new WaitForSeconds(0.1f);
+		toungeLineRenderer.enabled = false;
+	}
+	
+	public void Toss(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource) {
+        LaunchEgg();
     }
 
     void LaunchEgg() {
